@@ -1,11 +1,5 @@
 from typing import Optional
-
-class TreeNode:
-    """@private"""
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
+from utils import TreeNode, to_bst
 
 # @leet start
 class Solution:
@@ -42,5 +36,8 @@ class Solution:
 
 
 # @leet end
+sol = Solution()
 def test():
-	 assert(2 + 2 == 4)
+    assert(sol.rangeSumBST(to_bst([10,5,15,3,7,None,18]), 7, 15) == 32)
+    assert(sol.rangeSumBST(to_bst([10,5,15,3,7,13,18,1,None,6]), 6, 10) == 23)
+

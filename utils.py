@@ -21,3 +21,15 @@ def to_binary_tree(items):
             node.right = TreeNode(val)
             q.append(node.right)
     return root
+
+def to_bst(items):
+    items.sort()
+    def sorted_list_to_bst(items):
+        if not items:
+            return None
+        mid = len(items) // 2
+        root = TreeNode(items[mid])
+        root.left = sorted_list_to_bst(items[:mid])
+        root.right = sorted_list_to_bst(items[mid+1:])
+        return root
+    return sorted_list_to_bst(items)
