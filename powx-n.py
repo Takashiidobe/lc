@@ -4,14 +4,14 @@ class Solution:
         """
         This function calculates the power of a number to another number in Log(n) time.
 
-        To do this in linear time, we simply turn x ^ n into x * n (n times).
+        To do this in linear time, we simply turn $x ^ n$ into x * n (n times).
 
         Since we have to do this in linear time, we have to take a max of log(n) operations.
 
         We can do this by recursively taking the n multiplications and dividing them by two.
 
         This works because, imagine (2 ^ 4), which is 16. This can be reduced to 4 * 4.
-        Or (2 * n / 2) * (2 * n / 2). To generalize this, x ^ n, where n is even becomes:
+        Or $(2 * n / 2) * (2 * n / 2)$. To generalize this, x ^ n, where n is even becomes:
 
         $$
         (x * n / 2) * (x * n / 2).
@@ -27,9 +27,26 @@ class Solution:
         We do this recursively and define the two base cases, which are when n = 1 and n = 0.
         When n = 0, we always return 1.
         When n = 1, we return x.
-        When n % 2 == 0, we return pow(x, n // 2) * pow(x, n // 2).
-        When n % 2 == 1, we return pow(x, n // 2) * pow(x, n // 2) * x.
-        If n is negative, simply return 1 / pow(x, -n) (the inverse).
+        When n % 2 == 0, we return $pow(x * x, n // 2)$.
+        When n % 2 == 1, we return $pow(x * x, n // 2) * x$.
+        If n is negative, simply return $1 / pow(x, -n)$ (the inverse).
+
+        For $2 ^ 8$: Note there are only 3 multiplications.
+        ```mermaid
+        graph TB;
+            A((2 ^ 8))-->B((4 ^ 4))
+            B-->C((16 ^ 2))
+            C-->D((256))
+        ```
+
+        For $2 ^ 9$: Note there are only 4 multiplications.
+        ```mermaid
+        graph TB;
+            A((2 ^ 9))-->B((4 ^ 4))
+            A-->E((2))
+            B-->C((16 ^ 2))
+            C-->D((256))
+        ```
         """
         if n < 0:
             return 1 / self.myPow(x, -n)
@@ -38,11 +55,9 @@ class Solution:
         if n == 1:
             return x
         if n % 2 == 0:
-            halved = self.myPow(x, n // 2)
-            return halved * halved
-        if n % 2 != 0:
-            halved = self.myPow(x, n // 2)
-            return halved * halved * x
+            return self.myPow(x * x, n // 2)
+        if n % 2 == 1:
+            return x * self.myPow(x * x, (n - 1) // 2)
         return 0
 
 # @leet end

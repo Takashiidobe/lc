@@ -1,9 +1,10 @@
+PDOC_FLAGS=--math --mermaid
 watch:
 	firefox localhost:8080
-	pdoc *.py --math -n
+	pdoc $(PDOC_FLAGS) *.py  -n
 
 build:
-	pdoc -o docs *.py --math
+	pdoc $(PDOC_FLAGS) -o docs *.py
 
 deploy: build
 	ntl deploy --prod
