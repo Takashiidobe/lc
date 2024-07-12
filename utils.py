@@ -3,6 +3,8 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
+    def __eq__(self, other) -> bool:
+        return self.val == other.val and self.left == other.left and self.right == other.right
 
 def to_binary_tree(items):
     if not items:

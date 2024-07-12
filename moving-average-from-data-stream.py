@@ -29,9 +29,13 @@ class MovingAverage:
     """
     def __init__(self, size: int):
         self.size = size
+        """The max allowed length of the queue"""
         self.items = deque()
+        """The queue itself"""
         self.curr_total = 0
+        """The current sum of the queue"""
         self.len = 0
+        """The current length of the queue"""
 
     def next(self, val: int) -> float:
         if self.len < self.size:
