@@ -5,7 +5,7 @@ class NestedInteger:
     """@private"""
 
     def __init__(self, value=None):
-        self.value: list | int = []
+        self.value = []
         if value:
             self.value = value
 
@@ -18,7 +18,7 @@ class NestedInteger:
     def setInteger(self, value):
         self.value = value
 
-    def getInteger(self) -> int:
+    def getInteger(self):
         if self.value is int:
             return self.value
         raise RuntimeError("Get List must be called on a NestedInteger that is an int")
