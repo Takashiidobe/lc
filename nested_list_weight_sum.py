@@ -1,14 +1,16 @@
 from collections import defaultdict
+
+
 class NestedInteger:
     """@private"""
+
     def __init__(self, value=None):
-        if not value:
-            self.value = []
-        else:
+        self.value: list | int = []
+        if value:
             self.value = value
 
     def isInteger(self) -> bool:
-        return type(self.value) == int
+        return self.value is int
 
     def add(self, elem: int):
         self.value.append(elem)
@@ -17,14 +19,15 @@ class NestedInteger:
         self.value = value
 
     def getInteger(self) -> int:
-        if type(self.value) == int:
+        if self.value is int:
             return self.value
-        raise RuntimeError('Get List must be called on a NestedInteger that is an int')
+        raise RuntimeError("Get List must be called on a NestedInteger that is an int")
 
     def getList(self) -> list:
-        if type(self.value) == list:
+        if self.value is list:
             return self.value
-        raise RuntimeError('Get List must be called on a NestedInteger that is a list')
+        raise RuntimeError("Get List must be called on a NestedInteger that is a list")
+
 
 # @leet start
 class Solution:
@@ -46,16 +49,19 @@ class Solution:
         Finally, each key -> value pair of depth -> numbers is multiplied together, and summed up.
         """
         depths = defaultdict(list)
+
         def recurse(curr: NestedInteger, depth: int):
             if curr.isInteger():
                 depths[depth].append(curr.getInteger())
             else:
                 for item in curr.getList():
                     recurse(item, depth + 1)
+
         for item in nestedList:
             recurse(item, 1)
 
         return sum(k * sum(v) for k, v in depths.items())
+
 
 # @leet end
 def test():

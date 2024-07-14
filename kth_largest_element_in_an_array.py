@@ -1,4 +1,6 @@
 import heapq
+
+
 # @leet start
 class Solution:
     """
@@ -15,6 +17,7 @@ class Solution:
     The fastest way to do this is in $O(n)$ time, which uses quickselect, along with a median of medians method.
     It's a little complicated to do, and can be $O(n^2)$ in the worst case without using Median of Medians.
     """
+
     def findKthLargest(self, nums: list[int], k: int) -> int:
         heap = [-num for num in nums]
         heapq.heapify(heap)
@@ -22,8 +25,11 @@ class Solution:
             heapq.heappop(heap)
         return -heapq.heappop(heap)
 
+
 # @leet end
 sol = Solution()
+
+
 def test():
-	assert(sol.findKthLargest([1, 2, 3], 2) == 2)
-	assert(sol.findKthLargest([3, 2, 1], 2) == 2)
+    assert sol.findKthLargest([1, 2, 3], 2) == 2
+    assert sol.findKthLargest([3, 2, 1], 2) == 2
