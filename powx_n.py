@@ -60,29 +60,36 @@ class Solution:
             return x * self.myPow(x * x, (n - 1) // 2)
         return 0
 
+
 # @leet end
 sol = Solution()
 
+
 def test_even_pow():
     """Test the path where the pow is positive and even."""
-    assert(sol.myPow(2, 4) == 16)
+    assert sol.myPow(2, 4) == 16
+
 
 def test_odd_pow():
     """Test the path where the pow is positive and odd."""
-    assert(sol.myPow(2, 5) == 32)
+    assert sol.myPow(2, 5) == 32
+
 
 def test_zero():
     """Test the path where the pow is 0."""
-    assert(sol.myPow(2, 0) == 1)
+    assert sol.myPow(2, 0) == 1
+
 
 def test_pow_one():
     """Test the path where the pow is 1."""
-    assert(sol.myPow(2, 1) == 2)
+    assert sol.myPow(2, 1) == 2
+
 
 def test_negative_even():
     """Test the path where the pow is negative and even."""
-    assert(sol.myPow(2, -2) == 1 / 4)
+    assert sol.myPow(2, -2) == 1 / 4
+
 
 def test_negative_odd():
     """Test the path where the pow is negative and odd."""
-    assert(sol.myPow(2, -3) == 1 / 8)
+    assert sol.myPow(2, -3) == 1 / 8
