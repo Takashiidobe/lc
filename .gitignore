@@ -2,3 +2,4 @@
 .netlify
 __pycache__/
 docs/
+pyrightconfig.json
