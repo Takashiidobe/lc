@@ -1,7 +1,7 @@
 # @leet start
 class Solution:
     def myPow(self, x: float, n: int) -> float:
-        """
+        r"""
         This function calculates the power of a number to another number in Log(n) time.
 
         To do this in linear time, we simply turn $x ^ n$ into x * n (n times).
